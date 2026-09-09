@@ -1,0 +1,13 @@
+test_async_callback_is_awaited (__main__.ServiceScopeTests.test_async_callback_is_awaited) ... ok
+test_characteristic_only_in_other_service_is_rejected (__main__.ServiceScopeTests.test_characteristic_only_in_other_service_is_rejected) ... ok
+test_default_service_sync_callback (__main__.ServiceScopeTests.test_default_service_sync_callback) ... ok
+test_explicit_service_disambiguates_duplicate_characteristic_uuid (__main__.ServiceScopeTests.test_explicit_service_disambiguates_duplicate_characteristic_uuid) ... ok
+test_explicit_uppercase_service_uuid (__main__.ServiceScopeTests.test_explicit_uppercase_service_uuid) ... ok
+test_missing_service_does_not_subscribe_to_another_service (__main__.ServiceScopeTests.test_missing_service_does_not_subscribe_to_another_service) ... ok
+test_payload_wrapper_preserves_header_stripping (__main__.ServiceScopeTests.test_payload_wrapper_preserves_header_stripping) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.011s
+
+OK
+{"complete_repository_preflight": false, "errors": 0, "failures": 0, "full_sdk_suite": false, "hardware_tested": false, "passed": 7, "source_set": "candidate", "tests_run": 7}

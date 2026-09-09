@@ -1,0 +1,90 @@
+test_async_callback_is_awaited (__main__.ServiceScopeTests.test_async_callback_is_awaited) ... ok
+test_characteristic_only_in_other_service_is_rejected (__main__.ServiceScopeTests.test_characteristic_only_in_other_service_is_rejected) ... ERROR
+test_default_service_sync_callback (__main__.ServiceScopeTests.test_default_service_sync_callback) ... ok
+test_explicit_service_disambiguates_duplicate_characteristic_uuid (__main__.ServiceScopeTests.test_explicit_service_disambiguates_duplicate_characteristic_uuid) ... ERROR
+test_explicit_uppercase_service_uuid (__main__.ServiceScopeTests.test_explicit_uppercase_service_uuid) ... ok
+test_missing_service_does_not_subscribe_to_another_service (__main__.ServiceScopeTests.test_missing_service_does_not_subscribe_to_another_service) ... ERROR
+test_payload_wrapper_preserves_header_stripping (__main__.ServiceScopeTests.test_payload_wrapper_preserves_header_stripping) ... ok
+
+======================================================================
+ERROR: test_characteristic_only_in_other_service_is_rejected (__main__.ServiceScopeTests.test_characteristic_only_in_other_service_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 200, in test_characteristic_only_in_other_service_is_rejected
+    c = await self.run_probe(collection((1, OMI, [(11, AUDIO)]), (2, CUSTOM, [])), packets.append,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             service_uuid=CUSTOM, expected=BleakError)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 172, in run_probe
+    await fn("fixture-device", callback, **kwargs)
+  File "/mnt/data/omi_ble_service_scope_20260909/upstream/omi/ble.py", line 52, in listen
+    await client.start_notify(char_uuid, _handler)
+  File "vendor/start_notify.py", line 60, in start_notify
+    await self._backend.start_notify(characteristic, wrapped_callback, **kwargs)
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 126, in start_notify
+    raise ProbeComplete()
+ProbeComplete
+
+======================================================================
+ERROR: test_explicit_service_disambiguates_duplicate_characteristic_uuid (__main__.ServiceScopeTests.test_explicit_service_disambiguates_duplicate_characteristic_uuid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 186, in test_explicit_service_disambiguates_duplicate_characteristic_uuid
+    c = await self.run_probe(collection((1, OMI, [(11, AUDIO)]), (2, CUSTOM, [(21, AUDIO)])),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             packets.append, service_uuid=CUSTOM)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 172, in run_probe
+    await fn("fixture-device", callback, **kwargs)
+  File "/mnt/data/omi_ble_service_scope_20260909/upstream/omi/ble.py", line 52, in listen
+    await client.start_notify(char_uuid, _handler)
+  File "vendor/start_notify.py", line 43, in start_notify
+    characteristic = self.services.get_characteristic(char_specifier)
+  File "/mnt/data/omi_ble_service_scope_20260909/vendor/service.py", line 190, in get_characteristic
+    raise BleakError(
+        "Multiple Characteristics with this UUID, refer to your desired characteristic by the `handle` attribute instead."
+    )
+BleakError: Multiple Characteristics with this UUID, refer to your desired characteristic by the `handle` attribute instead.
+
+======================================================================
+ERROR: test_missing_service_does_not_subscribe_to_another_service (__main__.ServiceScopeTests.test_missing_service_does_not_subscribe_to_another_service)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 193, in test_missing_service_does_not_subscribe_to_another_service
+    c = await self.run_probe(collection((1, OMI, [(11, AUDIO)])), packets.append,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             service_uuid=MISSING, expected=BleakError)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 172, in run_probe
+    await fn("fixture-device", callback, **kwargs)
+  File "/mnt/data/omi_ble_service_scope_20260909/upstream/omi/ble.py", line 52, in listen
+    await client.start_notify(char_uuid, _handler)
+  File "vendor/start_notify.py", line 60, in start_notify
+    await self._backend.start_notify(characteristic, wrapped_callback, **kwargs)
+  File "/mnt/data/omi_ble_service_scope_20260909/tests/test_service_scope.py", line 126, in start_notify
+    raise ProbeComplete()
+ProbeComplete
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.013s
+
+FAILED (errors=3)
+{"complete_repository_preflight": false, "errors": 3, "failures": 0, "full_sdk_suite": false, "hardware_tested": false, "passed": 4, "source_set": "upstream", "tests_run": 7}

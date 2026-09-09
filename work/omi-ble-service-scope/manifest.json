@@ -1,0 +1,51 @@
+{
+  "omi_ble": {
+    "path": "sdks/python/omi/ble.py",
+    "git_blob": "6b434b6075682bfff9e94f5ce0c7e9b3c43ced88",
+    "sha256": "80e1724647b9280e8148207d4152b341996e77b1260aaf2cfde24094f18fc3f3"
+  },
+  "omi_constants": {
+    "path": "sdks/python/omi/constants.py",
+    "git_blob": "aac6b07f4b69b1493e10a05e6dd750f8ab4b6247",
+    "sha256": "120582f77d4152022f88a5ef6e5383b41a73bba403c2db113c159bd2e257b827"
+  },
+  "candidate_status": "local candidate only; no upstream approval, full SDK suite, hardware or preflight claim",
+  "cash_received_usd": 0,
+  "proposed_bounty_usd": 10,
+  "approved_bounty_usd": 0,
+  "bleak_service": {
+    "repository": "hbldh/bleak",
+    "ref": "v0.22.3",
+    "path": "bleak/backends/service.py",
+    "git_blob": "09c503c99a8ede8f9dbf3eda9322ff32508476fd",
+    "sha256": "47cac220a252fd7c0026f4b1cbd5281d150de92ce5b98ab798ad69e504f0e47c"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "system": "Linux",
+    "machine": "x86_64"
+  },
+  "test_results": {
+    "upstream": {
+      "checks": 7,
+      "passed": 4,
+      "errors": 3,
+      "exit_code": 1
+    },
+    "candidate": {
+      "checks": 7,
+      "passed": 7,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "git_apply_check": 0,
+    "patched_file_equals_candidate": true
+  },
+  "bleak_dispatch_excerpt": {
+    "repository": "hbldh/bleak",
+    "ref": "v0.22.3",
+    "path": "bleak/__init__.py",
+    "parent_git_blob": "68e178125cf28848dc83440f52acc0dc80f96ca4",
+    "note": "start_notify method excerpt, class indentation removed; full parent blob not stored"
+  }
+}
